@@ -9,7 +9,6 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit, OnDestroy{
-  title = "lintPrettier";
 
   ngOnInit(): void {
   }
