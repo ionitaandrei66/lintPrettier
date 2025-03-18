@@ -2,6 +2,7 @@ Linter/prittier/husky
 
 lint-staged este un instrument care te ajută să rulezi automat comenzi (ex: ESLint, Prettier) doar pe fișierele modificate (staged)
 
+Trebuie să configurezi lint-staged, dar doar o singură dată, direct în package.json. După aia își face treaba automat la fiecare commit.
 
 
 Husky este o unealtă care îți permite să rulezi scripturi automat la anumite acțiuni Git (numite git hooks), cum ar fi:
@@ -56,3 +57,26 @@ npm install prettier --save-dev
 
 Configure Prettier to be used as an ESLint plugin
 npm install prettier-eslint eslint-config-prettier eslint-plugin-prettier
+
+
+
+in fisierul .husky, pre-commit 
+avem : #!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npx ng test
+npx ng lint
+
+
+. "$(dirname "$0")/_/husky.sh"
+➤ Asta înseamnă:
+
+„sursa” fișierul husky.sh – adică îl încarcă și îl rulează.
+$(dirname "$0") = calea către folderul .husky curent (adică locul în care e hook-ul).
+_/husky.sh = fișierul special creat de Husky pentru inițializare.
+
+#!/bin/sh
+➤ Asta zice că scriptul va fi executat cu shell-ul POSIX (sh).
+E standard pentru scripturi Bash în Unix/Linux/macOS.
+
+iar restul sunt comenzile pe care le v a executa pe rand
